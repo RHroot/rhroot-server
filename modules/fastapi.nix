@@ -46,7 +46,7 @@ in {
 
     serviceConfig.ExecStart = "/var/lib/fastapi/venv/bin/uvicorn app:app --host 127.0.0.1 --port 8000 --lifespan off";
 
-    # canonical form for install
+    # correct canonical install attribute
     install = {
       wantedBy = ["multi-user.target"];
     };
