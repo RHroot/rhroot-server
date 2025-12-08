@@ -51,8 +51,6 @@ in {
         /var/lib/fastapi/venv/bin/pip install fastapi uvicorn
       fi
     '';
-
-    # ensure uvicorn imports module from /var/lib/fastapi
     serviceConfig.ExecStart = "/var/lib/fastapi/venv/bin/uvicorn app:app --host 127.0.0.1 --port 8000 --lifespan off";
   };
 }
