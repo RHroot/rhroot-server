@@ -31,6 +31,13 @@ in {
     }
   ];
 
+  nix.gc.automatic = true;
+  nix.gc.dates = "daily";
+  nix.gc.options = "--delete-older-than 2d";
+  nix.optimise.automatic = true;
+  nix.optimise.dates = "weekly";
+  nix.settings.auto-optimise-store = true;
+
   networking.firewall = {
     enable = false;
     allowedTCPPorts = [22];
