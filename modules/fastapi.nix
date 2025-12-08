@@ -19,6 +19,12 @@ in {
     group = "fastapi";
   };
 
+  systemd.tmpfiles.rules =
+    (config.systemd.tmpfiles.rules or [])
+    ++ [
+      "d /var/lib/fastapi 0750 fastapi fastapi - -"
+    ];
+
   systemd.services.fastapi-app = {
     description = "FastAPI example app (uvicorn)";
     wants = ["network.target"];
@@ -32,8 +38,13 @@ in {
     };
 
     preStart = ''
-      mkdir -p /var/lib/fastapi
-      chown -R fastapi:fastapi /var/lib/fastapi
+      if [ ! -d /var/lib/fastapi ]; then
+        mkdir -p /var/lib/fastapi
+        if [ ! -d /var/lib/fastapi ]; then
+          echo "Cannot create /var/lib/fastapi" >&2
+          exit 1
+        fi
+      fi
 
       if [ ! -d /var/lib/fastapi/venv ]; then
         ${python.interpreter} -m venv /var/lib/fastapi/venv
@@ -43,6 +54,5 @@ in {
     '';
 
     serviceConfig.ExecStart = "/var/lib/fastapi/venv/bin/uvicorn app:app --host 127.0.0.1 --port 8000 --lifespan off";
-    # no install/wantedBy here; enable unit manually if needed
   };
 }
