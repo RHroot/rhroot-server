@@ -19,7 +19,6 @@ in {
     group = "fastapi";
   };
 
-  # add only the rules we need here — do not reference config.systemd.tmpfiles.rules
   systemd.tmpfiles.rules = [
     "d /var/lib/fastapi 0750 fastapi fastapi - -"
   ];
@@ -33,7 +32,8 @@ in {
       User = "fastapi";
       Group = "fastapi";
       Restart = "on-failure";
-      Environment = "PYTHONUNBUFFERED=1";
+      Environment = "PYTHONUNBUFFERED=1 PYTHONPATH=/var/lib/fastapi";
+      WorkingDirectory = "/var/lib/fastapi";
     };
 
     preStart = ''
@@ -52,6 +52,7 @@ in {
       fi
     '';
 
+    # ensure uvicorn imports module from /var/lib/fastapi
     serviceConfig.ExecStart = "/var/lib/fastapi/venv/bin/uvicorn app:app --host 127.0.0.1 --port 8000 --lifespan off";
   };
 }
