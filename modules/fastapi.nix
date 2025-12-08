@@ -22,10 +22,11 @@ in {
   systemd.tmpfiles.rules = [
     "d /var/lib/fastapi 0750 fastapi fastapi - -"
   ];
-  # /etc/nixos/modules/fastapi.nix (snippet)
+  # /etc/nixos/modules/fastapi.nix (corrected)
   systemd.services.fastapi-app = {
     enable = true;
     description = "FastAPI example app (uvicorn)";
+
     serviceConfig = {
       User = "fastapi";
       Group = "fastapi";
@@ -34,10 +35,12 @@ in {
       Restart = "on-failure";
       Environment = "PYTHONUNBUFFERED=1";
     };
+
     preStart = ''
       mkdir -p /var/lib/fastapi
       chown -R fastapi:fastapi /var/lib/fastapi
     '';
+
     install.wantedBy = ["multi-user.target"]; # <-- correct attribute
   };
 }
