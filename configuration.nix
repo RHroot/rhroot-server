@@ -10,7 +10,6 @@
   networking.hostName = "remote-nix";
 
   environment.systemPackages = with pkgs; [
-    neovim
     curl
     git
     openssl
