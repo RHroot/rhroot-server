@@ -20,6 +20,30 @@ in {
   networking.hostName = "remote-nix";
   environment.shells = with pkgs; [bash];
 
+  services.openssh = {
+    enable = true;
+    settings = {
+      PermitRootLogin = "no";
+      PasswordAuthentication = false;
+      PubkeyAuthentication = true;
+      AuthenticationMethods = "publickey";
+      MaxAuthTries = 3;
+      LoginGraceTime = "30s";
+      AllowTcpForwarding = false;
+      X11Forwarding = false;
+    };
+  };
+  services.fail2ban = {
+    enable = true;
+    jails.SSH = {
+      enabled = true;
+      filter = "sshd";
+      action = "iptables[name=SSH, port=ssh, protocol=tcp]";
+      maxretry = 3;
+      bantime = "1h";
+    };
+  };
+
   environment.systemPackages = with pkgs; [
     curl
     git
@@ -48,7 +72,7 @@ in {
     allowedTCPPorts = [22 8000];
     allowedUDPPorts = [51820];
     interfaces."wg0" = {
-      allowedTCPPorts = [3000 53];
+      allowedTCPPorts = [22 3000 53];
       allowedUDPPorts = [53];
     };
     trustedInterfaces = ["wg0"];
