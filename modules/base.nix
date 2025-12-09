@@ -23,7 +23,6 @@
   environment.systemPackages = with pkgs; [
     openssl
     qrencode
-    wireguard-tools
   ];
 
   nix.gc.automatic = true;
@@ -35,7 +34,7 @@
 
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [8000];
+    allowedTCPPorts = [];
     allowedUDPPorts = [51820];
     interfaces."wg0" = {
       allowedTCPPorts = [22 3000 53];
