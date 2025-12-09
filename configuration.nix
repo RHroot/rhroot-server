@@ -4,14 +4,7 @@
   lib,
   modulesPath,
   ...
-}: let
-  pkgs = import (fetchTarball {
-    url = "https://channels.nixos.org/nixos-25.11/nixexprs.tar.xz";
-  }) {};
-  unstable = import (fetchTarball {
-    url = "https://channels.nixos.org/nixpkgs-unstable/nixexprs.tar.xz";
-  }) {};
-in {
+}: {
   imports = [
     "${modulesPath}/virtualisation/amazon-image.nix"
     # My custom modules
@@ -32,7 +25,7 @@ in {
   environment.systemPackages = with pkgs; [
     curl
     git
-    unstable.neovim
+    neovim
   ];
 
   systemd.tmpfiles.rules = ["d /swap 0755 root root -"];
