@@ -18,6 +18,11 @@ in {
   ];
 
   networking.hostName = "remote-nix";
+  users.users.sten = {
+    isNormalUser = true;
+    extraGroups = ["wheel"];
+    shell = pkgs.bash;
+  };
   environment.shells = with pkgs; [bash];
 
   services.openssh = {
@@ -61,7 +66,7 @@ in {
 
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [22 8000];
+    allowedTCPPorts = [8000];
     allowedUDPPorts = [51820];
     interfaces."wg0" = {
       allowedTCPPorts = [22 3000 53];
