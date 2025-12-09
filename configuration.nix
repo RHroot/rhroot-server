@@ -28,7 +28,6 @@ in {
   };
 
   environment.shells = with pkgs; [bash];
-
   environment.systemPackages = with pkgs; [
     curl
     git
@@ -42,4 +41,6 @@ in {
       size = 4096;
     }
   ];
+
+  system.stateVersion = "25.11";
 }

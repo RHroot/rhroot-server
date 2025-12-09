@@ -68,7 +68,6 @@
     LC_ALL = "en_US.UTF-8";
   };
 
-  system.stateVersion = "25.11";
   nix.settings.experimental-features = [
     "nix-command"
   ];
