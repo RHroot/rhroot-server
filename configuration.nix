@@ -14,7 +14,7 @@ in {
     "${modulesPath}/virtualisation/amazon-image.nix"
     # My custom modules
     ./modules/wireguard.nix
-    ./modules/development.nix.nix
+    ./modules/development.nix
   ];
 
   networking.hostName = "remote-nix";
