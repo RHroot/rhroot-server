@@ -35,10 +35,10 @@ in {
     unstable.neovim
   ];
 
-  systemd.tmpfiles.rules = ["d /var/swap 0755 root root -"];
+  systemd.tmpfiles.rules = ["d /swap 0755 root root -"];
   swapDevices = [
     {
-      device = "/var/swap/swapfile";
+      device = "/swap/swapfile";
       size = 4096;
     }
   ];
