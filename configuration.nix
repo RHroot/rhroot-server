@@ -1,6 +1,7 @@
 {
   config,
   modulesPath,
+  lib,
   ...
 }: let
   pkgs = import (fetchTarball {
@@ -31,6 +32,7 @@ in {
   services.openssh = {
     enable = true;
     settings = {
+      PermitRootLogin = lib.mkForce "no";
       PasswordAuthentication = false;
       PubkeyAuthentication = true;
       AuthenticationMethods = "publickey";
