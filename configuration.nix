@@ -35,6 +35,9 @@ in {
     unstable.neovim
   ];
 
+  system.autoUpgrade.enable = true;
+  system.autoUpgrade.allowReboot = true;
+
   systemd.tmpfiles.rules = ["d /swap 0755 root root -"];
   swapDevices = [
     {
@@ -42,6 +45,5 @@ in {
       size = 4096;
     }
   ];
-
   system.stateVersion = "25.11";
 }
