@@ -7,9 +7,9 @@
   services.openssh = {
     enable = true;
     settings = {
-      PasswordAuthentication = false;
+      PasswordAuthentication = true;
       PubkeyAuthentication = true;
-      AuthenticationMethods = "publickey";
+      AuthenticationMethods = "publickey,password";
       MaxAuthTries = 3;
       LoginGraceTime = "30s";
       AllowTcpForwarding = false;

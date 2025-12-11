@@ -21,11 +21,21 @@ in {
   ];
 
   networking.hostName = "remote-nix";
+  users.users.root = {
+    hashedPassword = "$6$28aZM0l1BdYBUDI2$uvW8AflcBnPFLAAz7Mym7r07331JH8u1yZheJig3atk8NZmU0ROT/nH.5fxDsHjlXLLnwyAzQEVOmXpwAC2gD1";
+    openssh.authorizedKeys.keys = [
+   "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEW8mjOvzdHXlLKP7p6+OHweFN2X6aqqid3EJHvGIWXC sten@r181104";
+    ];
+  };
   users.users.sten = {
     isNormalUser = true;
     shell = pkgs.bash;
     extraGroups = ["wheel"];
     description = "sten";
+    hashedPassword = "$6$28aZM0l1BdYBUDI2$uvW8AflcBnPFLAAz7Mym7r07331JH8u1yZheJig3atk8NZmU0ROT/nH.5fxDsHjlXLLnwyAzQEVOmXpwAC2gD1";
+    openssh.authorizedKeys.keys = [
+   "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEW8mjOvzdHXlLKP7p6+OHweFN2X6aqqid3EJHvGIWXC sten@r181104";
+    ];
   };
 
   environment.shells = with pkgs; [bash];

@@ -1,2 +1,3 @@
 remote-nix.pem
-flake.lock
+my-remote-nix-key.pub
+my-remote-nix-key
