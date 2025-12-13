@@ -22,11 +22,8 @@
 
   networking.firewall = {
     enable = true;
-    allowedUDPPorts = [51820 53];
-    allowedTCPPorts = [3000];
-    extraCommands = ''
-      iptables -t nat -A POSTROUTING -s 10.8.0.0/24 -o ens5 -j MASQUERADE
-    '';
+    allowedUDPPorts = [53];
+    allowedTCPPorts = [53];
   };
 
   boot.kernel.sysctl = {

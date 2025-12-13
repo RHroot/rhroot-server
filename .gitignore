@@ -1,3 +1,1 @@
-remote-nix.pem
-my-remote-nix-key.pub
-my-remote-nix-key
+*.pem
