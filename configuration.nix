@@ -18,15 +18,11 @@ in {
   ];
 
   networking.hostName = "remote-nix";
-  users.users.root = {
-    hashedPassword = "$argon2id$v=19$m=65536,t=2,p=4$/yLJF3JRInJF2OHUE86yOQ$btwO7dBwVUPSjTc4/OG57KyYiLAsTdI8HlXdeyez22I";
-  };
   users.users.sten = {
     isNormalUser = true;
     shell = pkgs.bash;
     extraGroups = ["wheel"];
     description = "sten";
-    hashedPassword = "$argon2id$v=19$m=65536,t=2,p=4$/yLJF3JRInJF2OHUE86yOQ$btwO7dBwVUPSjTc4/OG57KyYiLAsTdI8HlXdeyez22I";
   };
 
   environment.shells = with pkgs; [bash];
