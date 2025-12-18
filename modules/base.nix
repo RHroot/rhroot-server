@@ -22,8 +22,8 @@
 
   networking.firewall = {
     enable = true;
-    allowedUDPPorts = [53 80 443];
-    allowedTCPPorts = [53 80 443];
+    allowedUDPPorts = [53];
+    allowedTCPPorts = [53];
   };
 
   boot.kernel.sysctl = {
