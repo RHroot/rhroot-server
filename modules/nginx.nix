@@ -10,7 +10,6 @@
       root = "/var/www/rishabhhaldiya.me";
 
       addSSL = true;
-      forceSSL = true;
 
       sslCertificate = "/etc/ssl/cloudflare/cert.pem";
       sslCertificateKey = "/etc/ssl/cloudflare/key.pem";
@@ -24,7 +23,6 @@
       root = "/var/www/rishabhhaldiya.me";
 
       addSSL = true;
-      forceSSL = true;
 
       sslCertificate = "/etc/ssl/cloudflare/cert.pem";
       sslCertificateKey = "/etc/ssl/cloudflare/key.pem";
