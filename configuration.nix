@@ -15,7 +15,7 @@ in {
   imports = [
     "${modulesPath}/virtualisation/amazon-image.nix"
     ./modules/base.nix
-    ./modules/nginx.nix
+    ./modules/site.nix
   ];
 
   networking.hostName = "remote-nix";

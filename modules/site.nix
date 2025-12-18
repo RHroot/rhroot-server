@@ -80,4 +80,9 @@
     acceptTerms = true;
     defaults.email = "rishabhhaldiya.me@proton.me";
   };
+
+  services.jellyfin = {
+    enable = true;
+    openFirewall = false;
+  };
 }
