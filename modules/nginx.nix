@@ -18,8 +18,4 @@
       root = "/var/www/rishabhhaldiya.me";
     };
   };
-  virtualHosts."_default_" = {
-    default = true;
-    root = "/var/www/rishabhhaldiya.me";
-  };
 }
