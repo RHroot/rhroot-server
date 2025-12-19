@@ -5,8 +5,6 @@
 }: {
   services.nginx = {
     enable = true;
-
-    # Trust Cloudflare and extract real client IP
     appendHttpConfig = ''
       real_ip_header CF-Connecting-IP;
 
