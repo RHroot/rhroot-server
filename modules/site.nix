@@ -76,7 +76,7 @@
   # ACME / Let's Encrypt
   security.acme = {
     acceptTerms = true;
-    defaults.email = "rishabhhaldiya.me@proton.me";
+    defaults.email = "rh.contact@zohomail.in";
   };
 
   services.jellyfin = {
